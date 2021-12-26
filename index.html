@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- displays site properly based on user's device -->
+
+  <link rel="icon" type="image/png" sizes="32x32" href="./images/favicon-32x32.png">
+  <link rel="stylesheet" href="style.css">
+  <script defer src="main.js"></script>
+  <script>
+    function shorten() {
+      /*
+      fetch("https://api.shrtco.de/v2/" , {
+        method: 'POST',
+        headers: {
+           'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(data)
+      })
+      .then(response => {
+        
+      "ok"= true,
+      "result"= {
+            "code": "example",
+            "url": "http://www.example.com/",
+            "password_protected": false,
+            "blocked": false,
+            "created": "2018-05-17 16:46:29"
+        
+    }
+      }) ?
+      */
+     /*
+      var data = {
+            "code": "example",
+            "url": "http://www.example.com/",
+            "password_protected": false,
+            "blocked": false,
+            "created": "2018-05-17 16:46:29"
+      }
+      */
+
+      /*
+        1. 웹페이지에서 입력한 주소 값을 가져온다 테스트 유알엘 변수로
+        2. 웹페이지에서 버튼을 클릭하면 펫치를 실행한다.
+        3. 반환된 데이터의 쇼트 링크를 미리보기(?)에 넣어주어 보여준다.
+
+        Promise << 키워드 알아두면 좋을듯
+        javascript 비동기 처리 << 키워드
+        javascript mvvm << keyword
+      */
+      
+      var result1 = document.getElementById("result1")
+      var baseUrl = "https://api.shrtco.de/v2/shorten?url="
+      var testURL = input.value;
+      fetch(baseUrl.concat(testURL)).then(
+        res => res.json()
+        .then(data => {
+          result1.innerHTML=`${data.result.short_link}`
+          console.log(data.result.short_link)
+        })
+      )
+  }
+
+  
+  </script>
+  <title>Shortly URL shortening API Challenge</title>
+
+</head>
+<body>
+ <div class="header">
+   <h1>Shortly</h1>
+   <h3>Features</h3>
+   <h3>Pricing</h3>
+   <h3>Resources</h3>
+
+     <div id="login">login</div>
+     <input type="button" value="Sign Up" id="signupbtn">
+ </div>
+
+ <div class="article">
+   <div class="section1">
+    <h1>More than just shorter links</h1>
+    <h3>Build your brand’s recognition and get detailed insights on how your links are performing.</h3>
+    <input type="button" value="Get Started" id="startbtn">
+   </div>
+   
+   <div class="section2">
+     <div></div>
+     <input type="text" placeholder="Shorten a link here..." id="input">
+     <input type="submit" value="Shorten It!" id="submitbtn" onclick="shorten()">
+    
+   </div>
+
+   <div id="section3">
+    <div id="result1"></div>
+    <input type="button" value="Copy" id="copy">
+   </div>
+   
+   <div class="section4">
+    <h2 id=title1>Advanced Statistics</h2>
+    <h3>Track how your links are performing across the web with our advanced statistics dashboard.</h3>
+    <div class="items">
+      <div class="item1">
+        <div>
+          <img src="images/icon-brand-recognition.svg" id="img1">
+        </div>
+        
+        <h2>Brand Recognition</h2>
+        <h4>Gain insights into who is clicking your links. Knowing when and where 
+          people engage with your content helps inform better decisions.</h4>
+      </div>
+
+      <div class="item2">
+        <div>
+          <img src="images/icon-detailed-records.svg" id="img2">
+        </div>
+        
+        <h2>Detailed Records</h2>
+        <h4>Gain insights into who is clicking your links. Knowing when and where 
+          people engage with your content helps inform better decisions.</h4>
+      </div>
+
+      <div class="item3">
+        <div>
+          <img src="images/icon-fully-customizable.svg" id="img3">
+        </div>
+        
+        <h2>Fully Customizable</h2>
+        <h4>Gain insights into who is clicking your links. Knowing when and where 
+          people engage with your content helps inform better decisions.</h4>
+      </div>
+    </div>
+   </div>
+
+   <div class="footer">
+    <h1>Boost your links today</h1>
+    <input type="button" value="Get Started" id="getstart">
+   </div>
+ </div>
+
+</body>
+</html>
